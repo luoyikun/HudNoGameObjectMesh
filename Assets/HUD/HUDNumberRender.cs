@@ -264,7 +264,7 @@ class HUDNumberRender
         {
             m_bAddCommandBuffer = false;
             if (m_renderCamera != null)
-                m_renderCamera.RemoveCommandBuffer(CameraEvent.AfterImageEffects, s_cmdBuffer);
+                m_renderCamera.RemoveCommandBuffer(HudSetting.GetCameraEvent(), s_cmdBuffer);
             m_renderCamera = null;
             s_cmdBuffer.Clear();
         }
@@ -490,7 +490,7 @@ class HUDNumberRender
             m_bMeshDirty = false;
             if(m_renderCamera != null)
             {
-                m_renderCamera.RemoveCommandBuffer(CameraEvent.AfterImageEffects, s_cmdBuffer);
+                m_renderCamera.RemoveCommandBuffer(HudSetting.GetCameraEvent(), s_cmdBuffer);
                 m_renderCamera = null;
                 m_bAddCommandBuffer = false;
             }
@@ -502,7 +502,7 @@ class HUDNumberRender
             if(s_cmdBuffer.sizeInBytes > 0 && caMain != null)
             {
                 m_renderCamera = caMain;
-                caMain.AddCommandBuffer(CameraEvent.AfterImageEffects, s_cmdBuffer);
+                caMain.AddCommandBuffer(HudSetting.GetCameraEvent(), s_cmdBuffer);
                 m_bAddCommandBuffer = true;
             }
         }

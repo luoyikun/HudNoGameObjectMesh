@@ -20,7 +20,8 @@ Shader "Unlit/HUDFont"
 		Cull Off
 		Lighting Off
 		ZWrite Off
-		ZTest Off
+		//ZTest Off //深度检测关闭，遮挡关系不正常
+		ZTest LEqual //开启深度检测
 		Fog { Mode Off }
 		ColorMask RGB
 		Blend SrcAlpha OneMinusSrcAlpha

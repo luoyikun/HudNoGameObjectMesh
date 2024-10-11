@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public enum HUDAlignType
 {
@@ -28,7 +29,7 @@ public struct HudAnimAttibute
     public float GapTime;
     public int SpriteGap; // 图片间隔
     public HUDAlignType AlignType;
-    public bool ScreenAlign; // 是不是按屏幕对齐
+    public bool ScreenAlign; // 是不是按屏幕对齐，设置为true，不会根据远近缩放
     public HUDAlignType ScreenAlignType; // 屏幕对齐类型
 }
 
@@ -86,6 +87,20 @@ public class HudTitleLabelSet
 
 class HudSetting
 {
+    public static bool m_isUseZTest = true;
+    public static CameraEvent GetCameraEvent()
+    {
+        if (m_isUseZTest)
+        {
+            return CameraEvent.AfterForwardAlpha;
+        }
+        else
+        {
+            return CameraEvent.AfterImageEffects;
+        }
+        return CameraEvent.AfterForwardAlpha;
+    }
+
     static HudSetting s_pHudSetting = null;
     public static HudSetting Instance
     {

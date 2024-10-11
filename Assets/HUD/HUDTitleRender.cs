@@ -998,7 +998,7 @@ class HUDTitleInfo : HUDTitleBase
             if (m_cmdBuffer != null)
             {
                 if(m_renderCameara != null)
-                    m_renderCameara.RemoveCommandBuffer(CameraEvent.AfterImageEffects, m_cmdBuffer);
+                    m_renderCameara.RemoveCommandBuffer(HudSetting.GetCameraEvent(), m_cmdBuffer);
                 m_cmdBuffer.Clear();
                 m_renderCameara = null;
             }
@@ -1345,7 +1345,7 @@ class HUDTitleInfo : HUDTitleBase
             else
             {
                 if(m_renderCameara != null)
-                    m_renderCameara.RemoveCommandBuffer(CameraEvent.AfterImageEffects, m_cmdBuffer);
+                    m_renderCameara.RemoveCommandBuffer(HudSetting.GetCameraEvent(), m_cmdBuffer);
             }
             m_cmdBuffer.Clear();
             m_renderCameara = null;
@@ -1368,7 +1368,7 @@ class HUDTitleInfo : HUDTitleBase
             if (m_cmdBuffer.sizeInBytes > 0)
             {
                 m_renderCameara = caMain;
-                caMain.AddCommandBuffer(CameraEvent.AfterImageEffects, m_cmdBuffer);
+                caMain.AddCommandBuffer(HudSetting.GetCameraEvent(), m_cmdBuffer);
             }
         }
     }
